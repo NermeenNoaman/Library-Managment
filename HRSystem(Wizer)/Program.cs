@@ -5,6 +5,8 @@ using HRSystem.Infrastructure.Contracts;
 using HRSystem.Infrastructure.Data;
 using HRSystem.Infrastructure.Implementations;
 using HRSystem.Infrastructure.Implementations.Services;
+using HRSystem.Infrastructure.Repositories;
+using HRSystem.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -43,7 +45,10 @@ namespace HRSystem_Wizer_
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
             builder.Services.AddScoped<ILibraryBranchRepository, LibraryBranchRepository>();
-
+            builder.Services.AddScoped<IBorrowingRepository, BorrowingRepository>();
+            builder.Services.AddScoped<IBorrowingService, BorrowingService>();
+            builder.Services.AddScoped<IFineRepository, FineRepository>();
+            builder.Services.AddScoped<IFineService, FineService>();
             // ---------------- JWT CONFIGURATION ----------------
 
 

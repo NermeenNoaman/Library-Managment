@@ -1,5 +1,4 @@
 using HRSystem.BaseLibrary.Models;
-using HRSystem.BaseLibrary.Models;
 using System.Threading.Tasks;
 
 namespace HRSystem.Infrastructure.Contracts
