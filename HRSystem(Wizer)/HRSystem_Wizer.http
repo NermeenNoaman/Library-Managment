@@ -1,0 +1,6 @@
+@HRSystem_Wizer__HostAddress = http://localhost:5179
+
+GET {{HRSystem_Wizer__HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

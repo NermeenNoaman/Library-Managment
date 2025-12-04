@@ -1,0 +1,194 @@
+﻿{
+   "CodeGenerationMode": 5,
+   "ContextClassName": "HRSystemContext",
+   "ContextNamespace": "HRSystem.Infrastructure.Data",
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "MinimumProductVersion": "2.6.1186",
+   "ModelNamespace": "HRSystem_BaseLibrary.Models",
+   "OutputContextPath": "..\\HRSystem.Infrastructure\\Data",
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "HRSystem_BaseLibrary",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[LkpBenefitTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpGeneralDataBranches]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpGeneralDataCompanyProfiles]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpHRDepartments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LkpJobApplication]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LKPLeaveTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LKPPermissionTypes]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[LKPSalary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TblLLeaveBalance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLAssetManagement]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLAttendance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLBenefitsCompensation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLCandidate]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLCVBank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLDisciplinaryActions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLDocumentManagement]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLEmployee]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLEmployee_Training]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLEvaluationCriteria]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLHRNeedRequests]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLInterview]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLJob]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLLeave]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLLeaveBalance]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLOffboarding]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLOnboarding]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLPerformanceEvaluation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLPermissions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLProject]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLProject_Assignment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLRecruitmentPortal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLRequests]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLSelfServiceRequests]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLSurvey]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLSurvey_Response]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLTraining]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TPLUser]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": true,
+   "UseT4Split": false
+}
