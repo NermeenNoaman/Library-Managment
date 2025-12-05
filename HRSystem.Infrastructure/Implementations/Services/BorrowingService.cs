@@ -11,6 +11,7 @@ namespace HRSystem.Infrastructure.Services
 {
     public class BorrowingService : IBorrowingService
     {
+      
         private readonly IBorrowingRepository _repo;
         private readonly HRSystemContext _context;
         private readonly IMapper _mapper;
@@ -27,6 +28,12 @@ namespace HRSystem.Infrastructure.Services
 
         public async Task<BorrowingReadDto> BorrowBookAsync(BorrowingCreateDto dto)
         {
+            var isAlreadyBorrowed = await _repo.IsBookCurrentlyBorrowedByMemberAsync(dto.MemberId, dto.BookId);
+
+            if (isAlreadyBorrowed)
+            {
+                throw new InvalidOperationException($"The member (ID: {dto.MemberId}) has already borrowed the book (ID: {dto.BookId}) and has not returned it yet.");
+            }
             if (await _repo.HasUnpaidFinesAsync(dto.MemberId))
                 throw new Exception("Cannot borrow: Member has unpaid fines.");
 
@@ -44,7 +51,10 @@ namespace HRSystem.Infrastructure.Services
                 book_id = dto.BookId,
                 borrow_date = DateTime.UtcNow,
                 due_date = DateTime.UtcNow.AddDays(7),
-                status = "Borrowed"
+                status = "Borrowed",
+                created_at = DateTime.UtcNow,
+                updated_at = DateTime.UtcNow,
+                return_date = null
             };
 
             using var transaction = await _context.Database.BeginTransactionAsync();
@@ -79,7 +89,6 @@ namespace HRSystem.Infrastructure.Services
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                // حساب الغرامة إذا متأخر
                 if (now > borrowing.due_date)
                 {
                     var daysLate = (int)Math.Ceiling((now - borrowing.due_date).TotalDays);

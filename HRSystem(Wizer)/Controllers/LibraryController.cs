@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize(Roles = "Admin")] // Only Admin should manage master library data
+[Authorize(Roles = "Admin")] // Only Admin should manage master library data
 public class LibraryController : ControllerBase
 {
     private readonly ILibraryRepository _libraryRepo;
@@ -28,6 +28,8 @@ public class LibraryController : ControllerBase
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LibraryReadDto))]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [Authorize(Roles = "Admin")] 
+
     public async Task<IActionResult> CreateLibrary([FromBody] LibraryCreateDto dto)
     {
         // Validation: Check for unique Tax Number
@@ -50,6 +52,8 @@ public class LibraryController : ControllerBase
     // GET: Get All Libraries (READ ALL)
     // =========================================================================
     [HttpGet]
+    [Authorize(Roles = "Admin")]
+
     public async Task<IActionResult> GetAllLibraries()
     {
         var entities = await _libraryRepo.GetAllAsync();
@@ -61,6 +65,8 @@ public class LibraryController : ControllerBase
     // GET: Get Library by ID (READ SINGLE)
     // =========================================================================
     [HttpGet("{id}")]
+    [Authorize(Roles = "Admin")]
+
     public async Task<IActionResult> GetLibraryById(int id)
     {
         var entity = await _libraryRepo.GetByIdAsync(id);
@@ -76,6 +82,8 @@ public class LibraryController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")]
+
     public async Task<IActionResult> UpdateLibrary(int id, [FromBody] LibraryUpdateDto dto)
     {
         var existingEntity = await _libraryRepo.GetByIdAsync(id);
@@ -96,6 +104,8 @@ public class LibraryController : ControllerBase
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")]
+
     public async Task<IActionResult> DeleteLibrary(int id)
     {
         var entity = await _libraryRepo.GetByIdAsync(id);

@@ -27,8 +27,6 @@ public partial class BORROWING
     [StringLength(70)]
     public string status { get; set; }
 
-    public int? renewed_count { get; set; }
-
     [Column(TypeName = "datetime")]
     public DateTime? created_at { get; set; }
 
@@ -39,7 +37,6 @@ public partial class BORROWING
 
     public int book_id { get; set; }
 
-    public int librarian_id { get; set; }
 
     [InverseProperty("borrowing")]
     public virtual ICollection<FINE> FINEs { get; set; } = new List<FINE>();
@@ -48,9 +45,7 @@ public partial class BORROWING
     [InverseProperty("BORROWINGs")]
     public virtual BOOK book { get; set; }
 
-    [ForeignKey("librarian_id")]
-    [InverseProperty("BORROWINGs")]
-    public virtual LIBRARIAN librarian { get; set; }
+   
 
     [ForeignKey("member_id")]
     [InverseProperty("BORROWINGs")]

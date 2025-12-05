@@ -4,11 +4,32 @@ using HRSystem.Infrastructure.Data;
 using HRSystem.Infrastructure.Implementations;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 namespace HRSystem.Infrastructure.Repositories
 {
     public class BorrowingRepository : GenericRepository<BORROWING>, IBorrowingRepository
     {
+
         public BorrowingRepository(HRSystemContext context) : base(context) { }
+
+        // =======================================================
+        // Get Borrowings by Member ID (Active Only) - IMPLEMENTATION
+        // =======================================================
+        public async Task<IEnumerable<BORROWING>> GetBorrowingsByMemberIdAsync(int memberId)
+        {
+            
+            return await _dbSet
+                .Where(b => b.member_id == memberId && b.status == "Borrowed")
+                .Include(b => b.book)
+                .ToListAsync();
+        }
+        public async Task<bool> IsBookCurrentlyBorrowedByMemberAsync(int memberId, int bookId)
+        {
+            return await _dbSet
+                             .AnyAsync(b => b.member_id == memberId &&
+                                            b.book_id == bookId &&
+                                            b.return_date == null);
+        }
 
         public async Task<int> CountActiveBorrowingsAsync(int memberId)
         {

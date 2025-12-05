@@ -18,7 +18,7 @@ public class FineService : IFineService
     }
 
     // =======================================================
-    // 1. Get Fines (للعضو/الجميع)
+    // 1. Get Fines 
     // =======================================================
     public async Task<IEnumerable<FINE>> GetMemberFinesAsync(int memberId, bool includePaid = false)
     {
@@ -26,7 +26,6 @@ public class FineService : IFineService
 
         if (!includePaid)
         {
-            // جلب الغرامات غير المدفوعة فقط افتراضياً
             query = query.Where(f => f.payment_status == "Unpaid"); 
         }
 
@@ -34,7 +33,7 @@ public class FineService : IFineService
     }
 
     // =======================================================
-    // 2. Pay Fine (منطق الدفع)
+    // 2. Pay Fine 
     // =======================================================
     public async Task<FINE> PayFineAsync(int fineId, decimal paymentAmount)
     {
@@ -46,7 +45,6 @@ public class FineService : IFineService
         if (fine.payment_status == "Paid")
             throw new Exception("This fine has already been paid.");
             
-        // 🛑 التحقق من المبلغ المدفوع
         if (paymentAmount < fine.fine_amount)
             throw new Exception($"Payment amount must be at least {fine.fine_amount:C}.");
 

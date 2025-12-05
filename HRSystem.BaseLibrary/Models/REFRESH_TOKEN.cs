@@ -15,10 +15,7 @@ public partial class REFRESH_TOKEN
 
     public int user_id { get; set; }
 
-    [Required]
-    [StringLength(255)]
-    [Unicode(false)]
-    public string email { get; set; }
+
 
     [Required]
     [StringLength(500)]
@@ -30,8 +27,8 @@ public partial class REFRESH_TOKEN
 
     [Column(TypeName = "datetime")]
     public DateTime created { get; set; }
-
-    public DateTime revoked { get; set; }
+    [Column(TypeName = "datetime")]
+    public DateTime? revoked { get; set; }
 
     [ForeignKey("user_id")]
     [InverseProperty("REFRESH_TOKENs")]

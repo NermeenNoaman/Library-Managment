@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using HRSystem.BaseLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace  HRSystem.BaseLibrary.Models;
+namespace HRSystem.BaseLibrary.Models;
 
 
 [Table("RESERVATION")]

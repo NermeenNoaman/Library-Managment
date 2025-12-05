@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using HRSystem.BaseLibrary.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +31,7 @@ public partial class USER
     public string fullname { get; set; }
 
     [Required]
-    [StringLength(20)]
+    [StringLength(11)]
     [Unicode(false)]
     public string phone { get; set; }
 
@@ -44,9 +45,6 @@ public partial class USER
 
     [Column(TypeName = "datetime")]
     public DateTime? updated_at { get; set; }
-
-    [InverseProperty("user")]
-    public virtual LIBRARIAN LIBRARIAN { get; set; }
 
     [InverseProperty("user")]
     public virtual MEMBER MEMBER { get; set; }

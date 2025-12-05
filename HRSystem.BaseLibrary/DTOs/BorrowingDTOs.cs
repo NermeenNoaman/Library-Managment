@@ -15,7 +15,6 @@ namespace HRSystem.BaseLibrary.DTOs
         public string Status { get; set; }
         public int MemberId { get; set; }
         public int BookId { get; set; }
-        public int LibrarianId { get; set; }
     }
 
     // =========================================================================
@@ -47,6 +46,5 @@ namespace HRSystem.BaseLibrary.DTOs
 
         public int? MemberId { get; set; }
         public int? BookId { get; set; }
-        public int? LibrarianId { get; set; }
     }
 }

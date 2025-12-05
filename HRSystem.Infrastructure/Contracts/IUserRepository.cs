@@ -9,4 +9,3 @@ namespace HRSystem.Infrastructure.Contracts
         Task<bool> UserExistsAsync(string username);
     }
 }
-

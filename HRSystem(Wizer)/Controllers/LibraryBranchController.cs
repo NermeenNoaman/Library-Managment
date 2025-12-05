@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 [Route("api/[controller]")]
 [ApiController]
-//[Authorize(Roles = "Admin, Librarian")] // Admin and Librarians manage branches
+[Authorize(Roles = "Admin")] // Admin and Librarians manage branches
 public class LibraryBranchController : ControllerBase
 {
     private readonly ILibraryBranchRepository _branchRepo;
@@ -32,6 +32,8 @@ public class LibraryBranchController : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LibraryBranchReadDto))]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")] // Admin and Librarians manage branches
+
     public async Task<IActionResult> CreateBranch([FromBody] LibraryBranchCreateDto dto)
     {
         // Validation: Check if the parent Library exists
@@ -63,6 +65,8 @@ public class LibraryBranchController : ControllerBase
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LibraryBranchReadDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")] // Admin and Librarians manage branches
+
     public async Task<IActionResult> GetBranchById(int id)
     {
         var entity = await _branchRepo.GetByIdAsync(id);
@@ -77,6 +81,8 @@ public class LibraryBranchController : ControllerBase
     // =========================================================================
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<LibraryBranchReadDto>))]
+    [Authorize(Roles = "Admin")] // Admin and Librarians manage branches
+
     public async Task<IActionResult> GetAllBranches()
     {
         var entities = await _branchRepo.GetAllAsync();
@@ -90,6 +96,8 @@ public class LibraryBranchController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")] // Admin and Librarians manage branches
+
     public async Task<IActionResult> UpdateBranch(int id, [FromBody] LibraryBranchUpdateDto dto)
     {
         if (id != dto.BranchId)
@@ -115,6 +123,8 @@ public class LibraryBranchController : ControllerBase
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [Authorize(Roles = "Admin")] // Admin and Librarians manage branches
+
     public async Task<IActionResult> DeleteBranch(int id)
     {
         var entity = await _branchRepo.GetByIdAsync(id);

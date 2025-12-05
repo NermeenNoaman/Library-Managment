@@ -8,5 +8,8 @@ namespace HRSystem.Infrastructure.Contracts
         Task<int> CountActiveBorrowingsAsync(int memberId);
         Task<bool> HasUnpaidFinesAsync(int memberId);
         Task<BORROWING> GetBorrowingWithBookAsync(int borrowingId);
+        Task<bool> IsBookCurrentlyBorrowedByMemberAsync(int memberId, int bookId);
+        Task<IEnumerable<BORROWING>> GetBorrowingsByMemberIdAsync(int memberId);
+
     }
 }

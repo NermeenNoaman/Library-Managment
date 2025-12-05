@@ -9,12 +9,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 
 namespace HRSystem.Infrastructure.Implementations.Services
 {
-    public class TokenService:ITokenService
+    public class TokenService : ITokenService
     {
         private readonly IConfiguration _config;
 
@@ -28,8 +29,8 @@ namespace HRSystem.Infrastructure.Implementations.Services
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, user.user_id.ToString()),
-                new Claim(ClaimTypes.Name, user.email),
-                new Claim(ClaimTypes.Role, user.role),
+                new Claim(ClaimTypes.Name, user.email.ToString()),
+                new Claim(ClaimTypes.Role, user.role)
             };
 
             var keyString = _config["Jwt:Key"];
@@ -44,21 +45,23 @@ namespace HRSystem.Infrastructure.Implementations.Services
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(30),
+                expires: DateTime.UtcNow.AddMinutes(60),
                 signingCredentials: creds
             );
 
             return await Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
         }
 
-        public  Task<string> GenerateRefreshTokenAsync()
+
+
+        public Task<string> GenerateRefreshTokenAsync()
         {
             var randomBytes = new byte[32];
             using var rng = RandomNumberGenerator.Create();
-            
-                rng.GetBytes(randomBytes);
-            
-            return  Task.FromResult(Convert.ToBase64String(randomBytes));
+
+            rng.GetBytes(randomBytes);
+
+            return Task.FromResult(Convert.ToBase64String(randomBytes));
         }
     }
 }

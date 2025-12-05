@@ -7,13 +7,10 @@ using Microsoft.EntityFrameworkCore;
 namespace HRSystem.BaseLibrary.Models;
 
 [Table("LIBRARIAN")]
-[Index("user_id", Name = "UQ__LIBRARIA__B9BE370E0A0EDD19", IsUnique = true)]
 public partial class LIBRARIAN
 {
     [Key]
     public int librarian_id { get; set; }
-
-    public int user_id { get; set; }
 
     [Required]
     [StringLength(255)]
@@ -52,8 +49,11 @@ public partial class LIBRARIAN
     [Column(TypeName = "datetime")]
     public DateTime? updated_at { get; set; }
 
-    [InverseProperty("librarian")]
-    public virtual ICollection<BORROWING> BORROWINGs { get; set; } = new List<BORROWING>();
+    [Required]
+    public int branch_id { get; set; }
+
+
+   
 
     [InverseProperty("library")]
     public virtual ICollection<LIBRARY_BRANCH> LIBRARY_BRANCHes { get; set; } = new List<LIBRARY_BRANCH>();
@@ -61,7 +61,5 @@ public partial class LIBRARIAN
     [InverseProperty("generated_byNavigation")]
     public virtual ICollection<REPORT> REPORTs { get; set; } = new List<REPORT>();
 
-    [ForeignKey("user_id")]
-    [InverseProperty("LIBRARIAN")]
-    public virtual USER user { get; set; }
+    
 }

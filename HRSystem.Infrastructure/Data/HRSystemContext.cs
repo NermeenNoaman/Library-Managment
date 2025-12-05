@@ -77,9 +77,7 @@ public partial class HRSystemContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_BORROWING_BOOK");
 
-            entity.HasOne(d => d.librarian).WithMany(p => p.BORROWINGs)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_BORROWING_LIBRARIAN");
+          
 
             entity.HasOne(d => d.member).WithMany(p => p.BORROWINGs)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -124,7 +122,6 @@ public partial class HRSystemContext : DbContext
                 .HasDefaultValueSql("(getdate())")
                 .HasAnnotation("Relational:DefaultConstraintName", "DF__LIBRARIAN__updat__70DDC3D8");
 
-            entity.HasOne(d => d.user).WithOne(p => p.LIBRARIAN).HasConstraintName("FK__LIBRARIAN__user___71D1E811");
         });
 
         modelBuilder.Entity<LIBRARY>(entity =>
@@ -198,8 +195,7 @@ public partial class HRSystemContext : DbContext
         {
             entity.HasKey(e => e.report_id).HasName("PK__REPORT__779B7C58B2302C7F");
 
-            entity.Property(e => e.created_at).HasDefaultValueSql("(getdate())");
-            entity.Property(e => e.generated_date).HasDefaultValueSql("(getdate())");
+            
 
             entity.HasOne(d => d.generated_byNavigation).WithMany(p => p.REPORTs)
                 .OnDelete(DeleteBehavior.ClientSetNull)

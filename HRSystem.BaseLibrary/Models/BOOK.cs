@@ -15,7 +15,7 @@ public partial class BOOK
     public int book_id { get; set; }
 
     [Required]
-    [StringLength(13)]
+    [StringLength(50)]
     [Unicode(false)]
     public string isbn { get; set; }
 
@@ -47,12 +47,8 @@ public partial class BOOK
 
     public int? pages { get; set; }
 
-    [Column(TypeName = "text")]
+    [StringLength(200)]
     public string description { get; set; }
-
-    [StringLength(500)]
-    [Unicode(false)]
-    public string cover_image { get; set; }
 
     [Required]
     [StringLength(50)]

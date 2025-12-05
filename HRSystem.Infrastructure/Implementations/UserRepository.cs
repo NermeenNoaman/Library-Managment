@@ -31,4 +31,3 @@ namespace HRSystem.Infrastructure.Implementations
         }
     }
 }
-

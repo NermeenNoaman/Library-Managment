@@ -38,7 +38,7 @@ namespace HRSystem_Wizer_.Controllers
                 // هنا بنسجل المستخدم
                 var result = await _authService.RegisterAsync(request);
 
-               
+
                 // ممكن نعمله Login بعد التسجيل بدل ما نرجع توكن مباشرة
                 return Ok(result);
             }
@@ -63,7 +63,7 @@ namespace HRSystem_Wizer_.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message , innerError = ex.InnerException?.Message });
+                return BadRequest(new { message = ex.Message, innerError = ex.InnerException?.Message });
             }
         }
 
@@ -94,12 +94,12 @@ namespace HRSystem_Wizer_.Controllers
             try
             {
                 // نجيب اسم المستخدم من التوكن الحالي
-                var username = User.Identity?.Name;
+                var Email = User.Identity?.Name;
 
-                if (string.IsNullOrEmpty(username))
+                if (string.IsNullOrEmpty(Email))
                     return Unauthorized();
 
-                var result = await _authService.LogoutAsync(username);
+                var result = await _authService.LogoutAsync(Email);
                 if (!result)
                     return BadRequest(new { message = "Logout failed." });
 

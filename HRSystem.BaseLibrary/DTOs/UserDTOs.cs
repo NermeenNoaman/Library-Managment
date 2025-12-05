@@ -35,6 +35,7 @@ namespace HRSystem.BaseLibrary.DTOs
     public class UserRegisterDto
     {
         [Required(ErrorMessage = "email is required.")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
 
 
@@ -50,7 +51,13 @@ namespace HRSystem.BaseLibrary.DTOs
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
 
-        
+        [Required(ErrorMessage = "Fullname confirmation is required.")]
+        public string fullname { get; set; }
+
+        [Required(ErrorMessage = "Phone confirmation is required.")]
+        [MinLength(11, ErrorMessage = "Phone must be at least 11 number.")]
+        public string Phone { get; set; }
+
         [StringLength(50, ErrorMessage = "Role name cannot exceed 50 characters.")]
         public string Role { get; set; } = "Member";
     }

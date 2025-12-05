@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 namespace HRSystem.BaseLibrary.DTOs
 {
     // =========================================================================
-    // 1. READ DTO (Output) - لعرض بيانات الغرامة
+    // 1. READ DTO (Output) 
     // =========================================================================
     public class FineReadDto
     {
@@ -20,7 +20,7 @@ namespace HRSystem.BaseLibrary.DTOs
     }
 
     // =========================================================================
-    // 2. PAY DTO (Input) - لدفع غرامة موجودة
+    // 2. PAY DTO (Input) 
     // =========================================================================
     public class FinePayDto
     {
@@ -32,5 +32,4 @@ namespace HRSystem.BaseLibrary.DTOs
         public decimal PaymentAmount { get; set; }
     }
 
-    // 🚨 ملاحظة: لن نحتاج إلى FineCreateDto لأن الغرامة تُنشأ تلقائيًا داخل BorrowingService
 }
